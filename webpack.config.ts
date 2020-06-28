@@ -3,7 +3,7 @@ import { join as pathJoin } from 'path';
 
 const outdir = pathJoin(__dirname, 'public');
 const config: webpack.Configuration = {
-  mode: 'development',
+  mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
   entry: './src/main',
   output: {
     path: outdir,
@@ -13,7 +13,10 @@ const config: webpack.Configuration = {
     rules: [
       {
         test: /\.tsx?$/,
-        use: 'ts-loader',
+        loader: 'ts-loader',
+        options: {
+          transpileOnly: true,
+        },
         exclude: /node_modules/,
       },
     ],
@@ -25,7 +28,7 @@ const config: webpack.Configuration = {
   devServer: {
     contentBase: outdir,
     port: 3000,
-  }
+  },
 };
 
 export default config;
