@@ -1,0 +1,8 @@
+{
+  "name": "myd3",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Soichi Takamura <thepiglovesyou@gmail.com>",
+  "license": "MIT",
+  "private": true
+}
